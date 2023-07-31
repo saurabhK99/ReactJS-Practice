@@ -4,9 +4,17 @@ import "./css/Register.css";
 
 const RegisterHandler = (user, pass, cpass) => {
   if (user !== "" && pass !== "" && pass === cpass) {
+    //add the credentials to the localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    localStorage.setItem(
+      "users",
+      JSON.stringify([...users, { username: user, pass }])
+    );
+
     alert("Registeration successful!");
     window.location.href = "/login";
-  } else alert("Please Enter all the details!");
+  } else if (cpass === "") alert("Please Enter all the details!");
+  else alert("Password not matched!!!");
 };
 
 const Register = () => {

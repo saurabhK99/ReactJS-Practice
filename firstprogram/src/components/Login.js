@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import "./css/Login.css";
 
 const loginHandler = (user, pass) => {
-  if (user === "mayank" && pass === "1234") {
-    alert("Login successful!");
-    window.location.href = "/";
-  } else alert("Wrong Credentials");
+  //checking the cerdentials in the localstorage
+  const users = JSON.parse(localStorage.getItem("users"));
+
+  for (let i = 0; i < users.length; i++) {
+    if (user === users[i].username && pass === users[i].pass) {
+      alert("Login successful!");
+      window.location.href = "/";
+    }
+  }
+  alert("Wrong Credentials!!!");
 };
 
 const Login = () => {
