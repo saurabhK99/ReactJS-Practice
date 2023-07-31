@@ -1,1 +1,1 @@
-console.log("This is a feature")
+console.write("This is a feature")
